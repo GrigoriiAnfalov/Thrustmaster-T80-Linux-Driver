@@ -42,10 +42,14 @@ virtual_device_events = [
     # Main Buttons
     uinput.BTN_SOUTH,  # A Button
     uinput.BTN_EAST,   # B Button
-    uinput.BTN_NORTH,  # X Button
     uinput.BTN_WEST,   # Y Button
-    uinput.BTN_SELECT, # Back
-    uinput.BTN_START,  # Start
+	uinput.BTN_NORTH,  # X Button
+
+    uinput.BTN_TL,
+    uinput.BTN_TR,
+    
+	uinput.BTN_SELECT, # Back
+	uinput.BTN_START,  # Start
     
     # Sticks MUST be 16-bit signed (-32768 to 32767) for Roblox/Wine
     uinput.ABS_X + (-32768, 32767, 16, 128),  # Steering
@@ -95,7 +99,7 @@ with uinput.Device(
                 vdev.emit(uinput.ABS_Z, normalized_brake)
         
         # Buttons
-        # Share options and PS buttons are not implemented because I got lazy and did not need them, but you can probably follow the logic from here.
+        # Share, options, and PS buttons are not implemented because I got lazy and did not need them, but you can probably follow the logic from here.
         elif event.type == evdev.ecodes.EV_KEY:
 
 			# Binds left paddle (BTN_WEST) to X (BTN_NORTH)
@@ -122,15 +126,12 @@ with uinput.Device(
             elif event.code == evdev.ecodes.BTN_EAST:
             	vdev.emit(uinput.BTN_SOUTH, event.value)
             
-            
-            # These were set up for Midnight Racing: Tokyo, because I couldn't be bothered to figure out the bumpers. You should delete the lines below if you want a more standard experience.
-            
-            # Binds L3 or Select (BTN_SELECT) to B (BTN_EAST)
+            # Binds L3 or Select (BTN_SELECT) to L1 (BTN_TL)
             elif event.code == evdev.ecodes.BTN_SELECT:
-            	vdev.emit(uinput.BTN_EAST, event.value)
+            	vdev.emit(uinput.BTN_TL, event.value)
                         
-            # Binds R3 or Start (BTN_START) to A (BTN_SOUTH)
+            # Binds R3 or Start (BTN_START) to R1 (BTN_TR)
             elif event.code == evdev.ecodes.BTN_START:
-            	vdev.emit(uinput.BTN_SOUTH, event.value)
+            	vdev.emit(uinput.BTN_TR, event.value)
             
             
