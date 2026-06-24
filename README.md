@@ -15,3 +15,6 @@ A basic linux driver for the racing wheel Thrustmaster T80 using python3 with ev
 * You can snoop the inputs from the wheel using evtest
 * Use the current code as reference, the comments are (hopefully) good enough that you can see the pattern
 * Vibe code the rest
+
+# PS:
+I might rewrite this in C or Rust if I get bored at some point later. Currently, I see no point in that.
