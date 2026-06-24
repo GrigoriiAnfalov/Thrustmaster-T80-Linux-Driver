@@ -8,6 +8,7 @@ A basic linux driver for the racing wheel Thrustmaster T80 using python3 with ev
 * Change the name of the wheel on line 8 to whatever your T80 is named
 
 # How to Run:
+* Put the wheel in ps4 mode and gamepad mode (blinking light)
 * sudo python3 t80_driver.py
 * sudo is required because the script crosses some high security boundaries that the kernel limits
 
